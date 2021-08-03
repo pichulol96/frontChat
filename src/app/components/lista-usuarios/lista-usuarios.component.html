@@ -1,0 +1,79 @@
+<div class="container">
+	<div *ngIf="!chat">
+		<div class="menu">
+
+			<button  mat-icon-button class="example-icon favorite-icon center" aria-label="Example icon-button with heart icon">
+		          <mat-icon class="{{mensaje}}" (click)="focus('mensaje')">mode_comment</mat-icon>
+		    </button>
+
+		    <button  mat-icon-button class="example-icon favorite-icon center" aria-label="Example icon-button with heart icon">
+				  <mat-icon class="{{persona}}" (click)="focus('personas')">people</mat-icon>
+
+		    </button>
+
+		</div>
+
+		<mat-card *ngIf="mensaje=='focus'">
+			<mat-card-title class="titulo" >
+		     Chat
+			</mat-card-title>
+
+			<mat-form-field class="example-form-field">
+			  <mat-label>Search person</mat-label>
+			  <input matInput type="text" name="value" [(ngModel)]="value">
+			  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+			    <mat-icon>close</mat-icon>
+			  </button>
+			</mat-form-field>
+		
+			<mat-card-content *ngFor="let chat of chats">
+				<div class="chat">
+				  <img mat-card-lg-image src="https://blog.mailrelay.com/wp-content/uploads/2017/01/soporte-al-cliente.png" >
+				  <p>.</p>
+				  <h4>Adrina</h4>
+				  
+				</div>
+
+				<p>12:78</p>
+				<label>hola guapo te amo mucho</label>
+				<hr>
+			</mat-card-content>
+
+			
+			
+		</mat-card>
+
+	    
+		<mat-card *ngIf="persona=='focus'">
+			<mat-card-title class="titulo" >
+		     People online ({{totalUsuarios}})
+			</mat-card-title>
+
+		    <div class="usuarios" >
+			<mat-card-content (click)="chatear(user.idusuario,user.nombre_completo,user.img)" *ngFor="let user of usersOnline">
+				<div class="chat">
+				 <img *ngIf="user.img==sinfoto" mat-card-lg-image src="http://192.168.1.75/chatLaravel/public/img/sinfoto.png" >	
+				  <img *ngIf="user.img!=sinfoto" mat-card-lg-image src="http://192.168.1.75/chatLaravel/public/img/{{user.img}}" >
+				  <p>.</p>
+				  <h4>{{user.nombre_completo}}</h4>
+				  
+				</div>
+
+				<hr>
+			</mat-card-content>
+			</div>
+			
+		</mat-card>
+    </div>
+</div>
+    <div>
+    	<!--
+	    <mat-icon class="atras" (click)="chat=!chat" *ngIf="chat" aria-hidden="false" aria-label="Example home icon">arrow_back
+	    </mat-icon>
+	-->
+
+		<app-chat  (atras)="salirChat()" [idUsuario]=userChat *ngIf="chat"></app-chat>
+    </div>
+    
+
+

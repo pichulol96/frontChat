@@ -1,0 +1,108 @@
+<mat-spinner style="margin: auto; top: 50%;" *ngIf='!chats'></mat-spinner>
+<mat-card id="chat" *ngIf='chats' class="example-card" >
+  <mat-card-header style="position:absolute; background:white; margin: 0px; left: 0px; top: 0px; width:100%;" >
+     <div mat-card-avatar >
+       	<mat-icon class="atras"  (click)="chatSalir()" aria-hidden="false" aria-label="Example home icon">arrow_back
+  	   </mat-icon>
+     </div>
+  	
+
+			
+    <div mat-card-avatar >
+    	<img  mat-card-lg-image src="http://192.168.1.75/chatLaravel/public/img/{{idUsuario.img}}" >
+      
+    </div>
+    <mat-card-title>{{idUsuario.nombre_completo}}</mat-card-title>
+    <mat-card-subtitle>
+      <strong style="font-size: 20px; color: green; margin-top:-20px;">
+      .
+      </strong>online
+    </mat-card-subtitle>
+    
+  </mat-card-header>
+  <!--<img mat-card-image style="margin-top: 15px;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+  <mat-card-content id="chat" #scrollMe style="padding: 0px; margin: 0px; top:63px;overflow-y: scroll; height: xyz;position: fixed; width: 96%; height: 83%;margin-bottom: 250px;">
+  	<div  class="mensajes" *ngFor="let chat of chats">
+  		<div  *ngIf="chat.usuario==idUsuario.idusuario">
+	    	<p  class="usuario1">
+				{{chat.mensaje}}<label class="hora">{{chat.hora}}</label>
+			  </p>
+
+			  
+	   </div>
+
+		<div class="mensajes" *ngIf="chat.usuario!=idUsuario.idusuario">
+			<p *ngIf="chat.usuario!=idUsuario.idusuario"class="usuario2">
+				{{chat.mensaje}}<label class="hora" >{{chat.hora}}</label>
+			</p>
+			
+	  </div>
+		
+	</div>
+  </mat-card-content>
+  <mat-card-actions style="position: fixed; left: 10px; margin: 0px; top:90%; background:white; width:99%;">
+    <!--<button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>-->
+    <div class="enviar-mensaje"  >
+    <textarea (keyup)="activarbtn()" placeholder="mensaje"  name="mensaje" [(ngModel)]="mensaje"  class="form-control"></textarea>
+
+
+      
+        <button disabled="{{btnEnviar}}" id="enviar" (click)="enviarMensaje()"  mat-fab color="primary" aria-label="Example icon button with a home icon">
+          <mat-icon>send</mat-icon>
+        </button>
+    </div>
+  </mat-card-actions>
+</mat-card>
+<audio id="noti" >
+  <source src="assets/sonidos/notificacion.mp3" type="audio/ogg">
+</audio>
+
+<!--
+<div>
+  <mat-card-header style="position: fixed; margin: 0px; left: 0px; background: white; top: 0px; width: 400px;" >
+     <div mat-card-avatar >
+        <mat-icon class="atras"  (click)="chatSalir()" aria-hidden="false" aria-label="Example home icon">arrow_back
+       </mat-icon>
+     </div>
+    
+
+      
+    <div mat-card-avatar >
+      <img  mat-card-lg-image src="http://192.168.1.75/chatLaravel/public/img/{{idUsuario.img}}" >
+      
+    </div>
+    <mat-card-title>{{idUsuario.nombre_completo}}</mat-card-title>
+    <mat-card-subtitle>
+      <strong style="font-size: 20px; color: green; margin-top:-20px;">
+      .
+      </strong>online
+    </mat-card-subtitle>
+    
+  </mat-card-header>
+</div>
+
+<div id="chat" #scrollMe style=" top:0px;overflow-y: scroll; height: xyz;position: fixed; width: 50%; height: 90%;">
+  <div class="" *ngFor="let chat of chats"> 
+     <div  *ngIf="chat.usuario==idUsuario.idusuario">
+        <p  class="usuario1">
+        {{chat.mensaje}}<label class="hora">{{chat.hora}}</label>
+        </p>
+     </div>
+     <div class="mensajes" *ngIf="chat.usuario!=idUsuario.idusuario">
+      <p *ngIf="chat.usuario!=idUsuario.idusuario"class="usuario2">
+        {{chat.mensaje}}<label class="hora" >{{chat.hora}}</label>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<div class="enviar-mensaje" style=" "  >
+  <textarea (keyup)="activarbtn()" placeholder="mensaje"  name="mensaje" [(ngModel)]="mensaje"  class="form-control">
+  </textarea>
+  <button disabled="{{btnEnviar}}" id="enviar" (click)="enviarMensaje()"  mat-fab color="primary" aria-label="Example icon button with a home icon">
+    <mat-icon>send</mat-icon>
+  </button>
+</div>
+-->

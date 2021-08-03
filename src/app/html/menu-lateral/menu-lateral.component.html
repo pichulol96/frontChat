@@ -1,0 +1,77 @@
+<div  class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+  <mat-toolbar *ngIf="menuNavegacion" color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Responsive App</h1>
+    <span class="example-spacer"></span>
+    
+    <div *ngIf="user">
+      <button  mat-icon-button class="example-icon favorite-icon center" aria-label="Example icon-button with heart icon">
+      <mat-icon>search</mat-icon>
+
+      </button>
+
+      <button  mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon matBadge="5" matBadgeColor="warn">chat</mat-icon>
+      <!-- Include text description of the icon's meaning for screen-readers -->
+      </button>
+
+      <button (click)="cerrarSesion()"  mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>power_settings_new2</mat-icon>
+      </button>
+    </div>
+
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <div *ngIf="user">
+          <div class="userLogeado"  *ngFor="let users of user">
+            <div>
+              <img *ngIf="users.img==sinfoto" src="http://192.168.1.75/chatLaravel/public/img/sinfoto.png">
+              <img *ngIf="users.img!=sinfoto" src="http://192.168.1.75/chatLaravel/public/img/{{users.img}}">
+
+            </div>
+            <h1>{{users.nombre_completo}}</h1>
+          </div>
+        </div>
+        
+
+        <div *ngIf="!user">
+          <div *ngFor="let nav2 of parteUsuarios">
+            <div *ngIf="nav2.title!=''">
+             <!--<h2>{{nav2.title}}</h2>-->
+            </div>
+            <a mat-list-item [routerLink]="nav2.route" >
+            <mat-icon>{{nav2.icon}}</mat-icon>
+            {{nav2.name}}
+            </a>
+          </div>
+      </div>
+      
+      <div *ngIf="user">
+        <div *ngFor="let nav of fillerNav">
+            <div *ngIf="nav.title!=''">
+             <!--<h2>{{nav.title}}</h2>-->
+            </div>
+            <a mat-list-item [routerLink]="nav.route" >
+            <mat-icon>{{nav.icon}}</mat-icon>
+            {{nav.name}}
+            </a>
+        </div>
+      </div>
+
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+
+
+<!--<div *ngIf="!shouldRun">Please open on Stackblitz to see result</div>-->

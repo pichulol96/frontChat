@@ -1,0 +1,65 @@
+.example-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+
+}
+.container{
+	margin-top: 10px;
+}
+.menu{
+	display: flex;
+    justify-content: flex-end;
+}
+.menu a{
+	margin-bottom: 20px;
+}
+.titulo{
+	text-align: center;
+}
+.chat{
+	display: flex;
+}
+.chat img{
+	width: 40px;
+	height: 40px;
+	border-radius: 100px;
+
+
+}
+.chat h4{
+	margin-left: 10px;
+	font-size: 15px;
+	color:black;
+}
+label{
+	display: flex;
+	margin-left: 60px;
+	
+}
+.chat p{
+	margin-top: 0px;
+	font-size: 50px;
+	color: green;
+}
+ p{
+	display: flex;
+	justify-content: flex-end;
+	margin-top: -50px;
+}
+.focus{
+	color: blue;
+}
+.noFocus{
+color: black;
+}
+.usuarios{
+cursor: pointer;
+
+
+
+}
+.atras{
+	cursor: pointer;
+	
+	
+}

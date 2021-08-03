@@ -1,0 +1,18 @@
+<h2 mat-dialog-title>New Item</h2>
+<mat-dialog-content class="mat-typography">
+  <form>
+    <div *ngFor="let input of inputs">
+      <mat-form-field class="example-form-field">
+        <mat-label>{{input.nombre}}</mat-label>
+        <input matInput type="text" name="input.valor+=1"  [(ngModel)]="input.nombre">
+        <button mat-button *ngIf="input.nombre" matSuffix mat-icon-button aria-label="Clear" (click)="input.nombre=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions>

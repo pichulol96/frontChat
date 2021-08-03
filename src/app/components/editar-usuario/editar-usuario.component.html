@@ -1,0 +1,100 @@
+<div class="container">
+	<mat-card *ngFor="let users of user">
+		<div class="contenido">
+			<mat-card-content>
+				<div>
+					<mat-card-title>
+				     PHOTO EDIT
+				    </mat-card-title>
+				    <div>
+		              
+		              <img *ngIf="users.img==sinfoto" [src]="imagenVisualizar ||imgRutaSinFoto "(click)="imagenInput.click()" >
+
+		              <img *ngIf="users.img!=sinfoto" [src]="imagenVisualizar || imgRuta+users.img "(click)="imagenInput.click()" >
+                    </div>
+					
+					<br>
+					<div class="custom-input-file d-none">
+								  <input #imagenInput type="file" [(ngModel)]="imagen" (change)="capturarFile($event)" >
+								  Seleccione imagen
+								  </div>
+					<button (click)="subirFoto()" class="editFoto" mat-raised-button color="primary">
+						<mat-icon>cached</mat-icon>Actualizar
+					</button>
+			    </div>
+                
+                <mat-card-title>
+					 NAME EDIT
+				</mat-card-title>
+			    <div class="seccion">
+					<mat-form-field class="example-form-field">
+					  <mat-label>New Name</mat-label>
+					  <input matInput type="text" [(ngModel)]="users.nombre_completo">
+					  <button *ngIf="users.nombre_completo" matSuffix mat-icon-button aria-label="Clear" (click)="users.nombre_completo=''">
+					    <mat-icon>close</mat-icon>
+					  </button>
+					</mat-form-field>
+					<button mat-mini-fab color="primary" aria-label="Example icon button with a plus one icon">
+				          <mat-icon>cached</mat-icon>
+				    </button>
+			    </div>
+
+                <mat-card-title>
+					 LAST NAME EDIT
+				</mat-card-title>
+
+			    <div class="seccion">
+					<mat-form-field class="example-form-field">
+					  <mat-label>New Last Name</mat-label>
+					  <input matInput type="text" [(ngModel)]="users.apellidos">
+					  <button *ngIf="users.apellidos" matSuffix mat-icon-button aria-label="Clear" (click)="users.apellidos=''">
+					    <mat-icon>close</mat-icon>
+					  </button>
+					</mat-form-field>
+					<button mat-mini-fab color="primary" aria-label="Example icon button with a plus one icon">
+				          <mat-icon>cached</mat-icon>
+				     </button>
+			    </div>
+                
+                <mat-card-title>
+					 PASSWORD EDIT
+				</mat-card-title>
+
+			    <div class="">
+					<mat-form-field >
+					    <mat-label>Enter Your Password</mat-label>
+					    <input matInput [type]="hide ? 'password' : 'text'">
+					    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+					      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+					    </button>
+					  </mat-form-field>
+
+					<mat-form-field >
+					    <mat-label>Enter New Password</mat-label>
+					    <input matInput [type]="hide ? 'password' : 'text'">
+					    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+					      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+					    </button>
+					  </mat-form-field>
+
+					  <mat-form-field >
+					    <mat-label>Repeat New Password</mat-label>
+					    <input matInput [type]="hide ? 'password' : 'text'">
+					    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+					      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+					    </button>
+					  </mat-form-field>
+
+					 <div class="example-button-container">
+				        <button mat-mini-fab color="primary" aria-label="Example icon button with a plus one icon">
+				          <mat-icon>cached</mat-icon>
+				        </button>
+				      </div>
+			    </div>
+
+			</mat-card-content>	
+
+		</div>
+		
+	</mat-card>
+</div>
